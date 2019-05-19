@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0223db3e45a18924584e4f5f66f1dd23, type: 3}
   m_Name: Mass Effect
   m_EditorClassIdentifier: 
-  strCaseName: 
-  strDiscName: 
-  cover: {fileID: 0}
-  isMatch: 0
+  strCaseName: Mass Effect
+  strDiscName: Interstellar
+  cover: {fileID: 21300000, guid: 1c70b5ecdeaa6794695b11228ca37c6b, type: 3}
