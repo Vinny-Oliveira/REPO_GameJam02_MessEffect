@@ -7,10 +7,15 @@ using TMPro;
 
 public class GameDisplay : MonoBehaviour
 {
+    // Game information of the game case
     public GameCase game;
+
+    // UI Elements
     public TextMeshProUGUI txtGameTitle;
     public Image gameCover;
 
+    public GameObject rotationAxis;
+    private Vector3 initialPosition;
     public bool isDisplayed;
 
     // Start is called before the first frame update
@@ -19,6 +24,9 @@ public class GameDisplay : MonoBehaviour
         // Get the information from the game scriptable object and place it in the game object
         txtGameTitle.text = game.caseName; //GameManager.GetInstance().gameDictionary[game.caseName];
         gameCover.sprite = game.cover;
+
+        // Get the initial position
+        initialPosition = transform.position;
     }
 
     /// <summary>
@@ -39,13 +47,15 @@ public class GameDisplay : MonoBehaviour
         Sequence mySequence = DOTween.Sequence();
 
         if (!isDisplayed) {
-            Vector3 target = transform.position + new Vector3(0, 0, -1.5f);
+            Vector3 target = new Vector3(0, 0, -1.5f);
             mySequence.Append(transform.DOMove(target, 2f));
             mySequence.Append(transform.DOLocalRotate(new Vector3(0, 90f, 0), 2f));
+            mySequence.Append(rotationAxis.transform.DOLocalRotate(new Vector3(0, 170f, 0), 1.5f));
         } else {
-            Vector3 target = transform.position + new Vector3(0, 0, 1.5f);
+            Vector3 target = initialPosition;
             mySequence.Append(transform.DOMove(target, 2f));
             mySequence.Prepend(transform.DOLocalRotate(new Vector3(0, 0, 0), 2f));
+            mySequence.Prepend(rotationAxis.transform.DOLocalRotate(new Vector3(0, 0, 0), 1.5f));
         }
 
         
