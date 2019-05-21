@@ -5,76 +5,78 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
-public class GameDisplay : MonoBehaviour
+public class CaseDisplay : MonoBehaviour
 {
     // Game information of the game case
-    public GameCase game;
+    public Game gameCase;
 
     // UI Elements
     public TextMeshProUGUI txtGameTitle;
     public Image gameCover;
 
+    // Control variables
     public GameObject rotationAxis;
     private Vector3 initialPosition;
     public bool isDisplayed;
+
+    // The disc inside
+    public DiscDisplay disc;
 
     // Start is called before the first frame update
     void Start()
     {
         // Get the information from the game scriptable object and place it in the game object
-        txtGameTitle.text = game.caseName; //GameManager.GetInstance().gameDictionary[game.caseName];
-        gameCover.sprite = game.cover;
+        txtGameTitle.text = gameCase.gameName; //GameManager.GetInstance().gameDictionary[game.caseName];
+        gameCover.sprite = gameCase.cover;
 
         // Get the initial position
         initialPosition = transform.position;
+
+        // The disc that is inside
+        disc = GetComponentInChildren<DiscDisplay>();
     }
 
     /// <summary>
     /// Check if the the disc inside this box belongs to it
     /// </summary>
     [ContextMenu("Check if match")]
-    public void CheckIfMatch() {
-        if (game.IsMatch()) {
+    public void CheckIfMatch() { /**** Eventually, this function should return a boolean so we can check if all games match their cases ****/
+        if (disc == null) { // If there is no disc inside the case
+            Debug.Log("The case is empty.");
+        } else if (gameCase.gameName == disc.gameDisc.gameName) { // Checks if the disc inside matches with the case
             Debug.Log("Great! This is the right disc!");
         } else {
-            Debug.Log("This disc does not belong to this case"); 
+            Debug.Log("This disc does not belong to this case");
         }
+
+        //if (gameCase.IsMatch()) {
+        //    Debug.Log("Great! This is the right disc!");
+        //} else {
+        //    Debug.Log("This disc does not belong to this case"); 
+        //}
     }
 
-    // Testing the movement of the game case
+    /// <summary>
+    /// Make the game case move towards the player and open; also, make it close and move away from the player
+    /// </summary>
     [ContextMenu("Make game move")]
     public void MakeGameMove() {
         Sequence mySequence = DOTween.Sequence();
 
-        if (!isDisplayed) {
-            Vector3 target = new Vector3(0, 0, -1.5f);
+        if (!isDisplayed) { // The case opens for the player
+            Vector3 target = new Vector3(0, 0, -1.5f);      ///// All values shall be tested and moved to the top on their respective variables
             mySequence.Append(transform.DOMove(target, 2f));
             mySequence.Append(transform.DOLocalRotate(new Vector3(0, 90f, 0), 2f));
             mySequence.Append(rotationAxis.transform.DOLocalRotate(new Vector3(0, 170f, 0), 1.5f));
-        } else {
+        } else { // The case closes
             Vector3 target = initialPosition;
             mySequence.Append(transform.DOMove(target, 2f));
             mySequence.Prepend(transform.DOLocalRotate(new Vector3(0, 0, 0), 2f));
             mySequence.Prepend(rotationAxis.transform.DOLocalRotate(new Vector3(0, 0, 0), 1.5f));
         }
 
-        
+        // Play the tween and switch the display value
         mySequence.Play();
         isDisplayed = !isDisplayed;
     }
-
-    //// Testing the movement of the game case
-    //[ContextMenu("Test Move")]
-    //public void TestMove()
-    //{
-    //    Tween myTween = transform.DOLocalRotate(new Vector3(0, 90f, 0), 2f).SetAutoKill(false);
-
-    //    if (isForward) {
-    //        myTween.Play();
-    //    } else {
-    //        myTween.Rewind();
-    //    }
-
-    //    isForward = !isForward;
-    //}
 }

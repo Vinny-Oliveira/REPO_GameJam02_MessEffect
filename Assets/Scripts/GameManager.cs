@@ -27,9 +27,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        /* FOR THE 2nd POSSIBILITY
         gameDictionary.Add(GAME.MASS_EFFECT, "Mass Effect");
         gameDictionary.Add(GAME.INTERSTELLAR, "Interstellar");
         gameDictionary.Add(GAME.BLADE_RUNNER, "Blade Runner");
+        */
+
         //DontDestroyOnLoad(gameObject);
     }
     #endregion

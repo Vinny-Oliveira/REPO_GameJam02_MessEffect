@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0223db3e45a18924584e4f5f66f1dd23, type: 3}
-  m_Name: Mass Effect
+  m_Name: Portal 2
   m_EditorClassIdentifier: 
-  gameName: Mass Effect
-  cover: {fileID: 21300000, guid: 1c70b5ecdeaa6794695b11228ca37c6b, type: 3}
+  gameName: Portal 2
+  cover: {fileID: 0}
