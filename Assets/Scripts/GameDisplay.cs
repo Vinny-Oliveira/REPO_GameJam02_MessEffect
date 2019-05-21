@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class GameDisplay : MonoBehaviour
 {
-    public Game game;
+    public GameCase game;
 
     public bool isDisplayed;
 

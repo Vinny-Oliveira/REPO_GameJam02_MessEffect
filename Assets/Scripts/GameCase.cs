@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GAME { MASS_EFFECT, INTERSTELLAR, BLADE_RUNNER };
+
 [CreateAssetMenu(fileName = "New Game", menuName = "Game")]
-public class Game : ScriptableObject {
+public class GameCase : ScriptableObject {
 
     /* PROPERTIES OF THE GAME */
 
-    public string strCaseName;
-    public string strDiscName;
+    public GAME caseName;
+    public GAME discName;
 
     public Sprite cover;
 
@@ -17,7 +19,7 @@ public class Game : ScriptableObject {
     /// </summary>
     /// <returns></returns>
     public bool IsMatch() {
-        if (strCaseName == strDiscName) {
+        if (caseName == discName) {
             return true;
         } else {
             return false;
