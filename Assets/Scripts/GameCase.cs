@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GAME { MASS_EFFECT, INTERSTELLAR, BLADE_RUNNER };
-
 [CreateAssetMenu(fileName = "New Game", menuName = "Game")]
 public class GameCase : ScriptableObject {
 
     /* PROPERTIES OF THE GAME */
 
-    public GAME caseName;
-    public GAME discName;
+    public string caseName;
+    public string discName;
 
     public Sprite cover;
 

@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class GameDisplay : MonoBehaviour
 {
     public GameCase game;
+    public TextMeshProUGUI txtGameTitle;
+    public Image gameCover;
 
     public bool isDisplayed;
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Get the information from the game scriptable object and place it in the game object
+        txtGameTitle.text = game.caseName; //GameManager.GetInstance().gameDictionary[game.caseName];
+        gameCover.sprite = game.cover;
+    }
 
     /// <summary>
     /// Check if the the disc inside this box belongs to it
