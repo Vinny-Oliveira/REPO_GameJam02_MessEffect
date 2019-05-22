@@ -18,6 +18,7 @@ public class CaseDisplay : MonoBehaviour
     public GameObject rotationAxis;
     private Vector3 initialPosition;
     public bool isDisplayed;
+    private bool isTweening;
 
     // The disc inside
     public DiscDisplay disc;
@@ -61,6 +62,8 @@ public class CaseDisplay : MonoBehaviour
     /// </summary>
     [ContextMenu("Make game move")]
     public void MakeGameMove() {
+        ChangeTweeingState(); // Change the state right before the movement starts to avoid double clicks
+
         Sequence mySequence = DOTween.Sequence();
 
         if (!isDisplayed) { // The case opens for the player
@@ -76,7 +79,23 @@ public class CaseDisplay : MonoBehaviour
         }
 
         // Play the tween and switch the display value
-        mySequence.Play();
+        mySequence.Play().OnComplete(ChangeTweeingState);
         isDisplayed = !isDisplayed;
+    }
+
+    /// <summary>
+    /// Make the game case move when it is clicked
+    /// </summary>
+    private void OnMouseDown()
+    {
+        //Debug.Log("CLICKED");
+        if (!isTweening) {
+            MakeGameMove();
+        }
+    }
+
+
+    private void ChangeTweeingState() {
+        isTweening = !isTweening;
     }
 }
