@@ -193,6 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8770987887735242757}
   - component: {fileID: 7189619976061614550}
+  - component: {fileID: 3655379698541835889}
   m_Layer: 0
   m_Name: GameCase
   m_TagString: Untagged
@@ -228,11 +229,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e673938dcae34e41beccffd2e7627db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
+  gameCase: {fileID: 0}
   txtGameTitle: {fileID: 5512548645356128578}
   gameCover: {fileID: 5512548646288017413}
   rotationAxis: {fileID: 8968993715518431502}
   isDisplayed: 0
+  disc: {fileID: 0}
+--- !u!65 &3655379698541835889
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8770987887735242758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.111866325, y: 1.33698, z: 1.0276823}
+  m_Center: {x: 0.026419736, y: 0.0122029185, z: 0.0012806654}
 --- !u!1 &8968993715518431502
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,41 +295,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834901713235233488, guid: d5086f1b328a00143ab80afdde08e72a,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
-        type: 3}
-      propertyPath: m_text
-      value: '{Game_Name}'
       objectReference: {fileID: 0}
     - target: {fileID: 3834901714082739830, guid: d5086f1b328a00143ab80afdde08e72a,
         type: 3}
@@ -435,6 +415,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.035323992
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834901712286632855, guid: d5086f1b328a00143ab80afdde08e72a,
+        type: 3}
+      propertyPath: m_text
+      value: '{Game_Name}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834901713235233488, guid: d5086f1b328a00143ab80afdde08e72a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5086f1b328a00143ab80afdde08e72a, type: 3}
