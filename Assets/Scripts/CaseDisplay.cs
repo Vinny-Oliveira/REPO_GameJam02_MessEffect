@@ -59,12 +59,6 @@ public class CaseDisplay : MonoBehaviour
         } else {
             Debug.Log("This disc does not belong to this case");
         }
-
-        //if (gameCase.IsMatch()) {
-        //    Debug.Log("Great! This is the right disc!");
-        //} else {
-        //    Debug.Log("This disc does not belong to this case"); 
-        //}
     }
 
     /// <summary>
@@ -98,7 +92,8 @@ public class CaseDisplay : MonoBehaviour
     /// </summary>
     private void OnMouseDown()
     {
-        if ((!isTweening && isDisplayed) || (!isTweening && GameManager.GetInstance().isClickable)) {
+        /* Case not moving AND (The case is displayed OR Multiple cases may be clicked) */
+        if (!isTweening && (isDisplayed || GameManager.GetInstance().isClickable)) {
             MakeGameMove();
         }
     }

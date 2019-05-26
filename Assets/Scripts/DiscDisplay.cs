@@ -61,9 +61,9 @@ public class DiscDisplay : MonoBehaviour
         GameObject goDiscHolder2 = GameManager.GetInstance().discHolder2;
 
                 /* Disc holder is empty */                                      /* Disc holder is in range */
-        if ((!goDiscHolder1.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder1.transform.position) < DISTANCE_TO_SLOT)) { // Distance to 1st disc holder
-            AttachToDiscHolder(goDiscHolder1);
-        } else if ((!goDiscHolder2.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder2.transform.position) < DISTANCE_TO_SLOT)) { // Distance to 2nd disc holder
+        if ((!goDiscHolder1.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder1.transform.position) < DISTANCE_TO_SLOT)) {
+            AttachToDiscHolder(goDiscHolder1); // Make the 1st disc holder a parent of the disc
+        } else if ((!goDiscHolder2.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder2.transform.position) < DISTANCE_TO_SLOT)) {
             AttachToDiscHolder(goDiscHolder2);
         } else {
             transform.position = initialPosition;
