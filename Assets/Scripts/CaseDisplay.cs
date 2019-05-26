@@ -44,7 +44,7 @@ public class CaseDisplay : MonoBehaviour
         initialPosition = transform.position;
 
         // The disc that is inside
-        disc = GetComponentInChildren<DiscDisplay>();
+        CheckForDiscInside();
     }
 
     /// <summary>
@@ -72,19 +72,42 @@ public class CaseDisplay : MonoBehaviour
 
         if (!isDisplayed) { // The case opens for the player
             Vector3 target = OUTSIDE_POSITION;
-            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME).OnStart(GameManager.GetInstance().ChangeClickingState)); // Prevent other games to be clicked
-            mySequence.Append(transform.DOLocalRotate(ROTATION_CASE, ROTATION_TIME));
-            mySequence.Append(rotationAxis.transform.DOLocalRotate(ROTATION_OPEN_CASE, OPEN_CLOSE_TIME));
+            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME)); // Move towards player
+            mySequence.Append(transform.DOLocalRotate(ROTATION_CASE, ROTATION_TIME)); // Rotate the front of the case to the player
+            mySequence.Append(rotationAxis.transform.DOLocalRotate(ROTATION_OPEN_CASE, OPEN_CLOSE_TIME).OnStepComplete(AttachToGameManager)); // Open the case and make it manageable by the Game Manager
+            mySequence.OnStart(GameManager.GetInstance().ChangeClickingState); // Prevent other games to be clicked
         } else { // The case closes
             Vector3 target = initialPosition;
             mySequence.Append(transform.DOMove(target, TRANSTATION_TIME).OnStepComplete(GameManager.GetInstance().ChangeClickingState)); // Allows games to be clicked again
             mySequence.Prepend(transform.DOLocalRotate(Vector3.zero, ROTATION_TIME));
             mySequence.Prepend(rotationAxis.transform.DOLocalRotate(Vector3.zero, OPEN_CLOSE_TIME));
+            mySequence.OnStart(DetachFromGameManager);
         }
 
         // Play the tween and switch the display value
         mySequence.Play().OnComplete(ChangeTweeingState);
         isDisplayed = !isDisplayed;
+    }
+
+    /// <summary>
+    /// Make this case an object of the Game Manager
+    /// </summary>
+    void AttachToGameManager() {
+        GameManager.GetInstance().caseOnDisplay = gameObject;
+    }
+
+    /// <summary>
+    /// Erase the case displayed in the Game Manager
+    /// </summary>
+    void DetachFromGameManager() {
+        GameManager.GetInstance().caseOnDisplay = null;
+    }
+
+    /// <summary>
+    /// Check if there are discs inside the case
+    /// </summary>
+    public void CheckForDiscInside() {
+        disc = GetComponentInChildren<DiscDisplay>();
     }
 
     /// <summary>
