@@ -17,7 +17,7 @@ public class DiscDisplay : MonoBehaviour
     void Start()
     {
         // Get the information from the game scriptable object and place it in the game object
-        txtGameTitle.text = gameDisc.gameName; //GameManager.GetInstance().gameDictionary[game.caseName];
+        //txtGameTitle.text = gameDisc.gameName; //GameManager.GetInstance().gameDictionary[game.caseName];
         gameCover.sprite = gameDisc.cover;
     }
 
