@@ -16,6 +16,7 @@ public class DiscDisplay : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 initialPosition;
+    const float DISTANCE_TO_SLOT = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,7 @@ public class DiscDisplay : MonoBehaviour
     {
         Vector3 discHolderPosition = GameManager.GetInstance().discHolder.transform.position;
 
-        if (Vector3.Distance(transform.position, discHolderPosition) < 1f) {
+        if (Vector3.Distance(transform.position, discHolderPosition) < DISTANCE_TO_SLOT) {
             transform.position = discHolderPosition;
             transform.parent = GameManager.GetInstance().discHolder.transform;
         } else {

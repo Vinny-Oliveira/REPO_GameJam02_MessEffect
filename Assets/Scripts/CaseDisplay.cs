@@ -14,6 +14,16 @@ public class CaseDisplay : MonoBehaviour
     public TextMeshProUGUI txtGameTitle;
     public Image gameCover;
 
+    // Tweening variables - Vectors
+    Vector3 OUTSIDE_POSITION = new Vector3(0, 0, -1.5f);
+    Vector3 ROTATION_CASE = new Vector3(0, 90f, 0);
+    Vector3 ROTATION_OPEN_CASE = new Vector3(0, 170f, 0);
+
+    // Tweening variables - Time dirations
+    const float TRANSTATION_TIME = 1.5f;
+    const float ROTATION_TIME = 1f;
+    const float OPEN_CLOSE_TIME = 1f;
+
     // Control variables
     public GameObject rotationAxis;
     private Vector3 initialPosition;
@@ -67,15 +77,15 @@ public class CaseDisplay : MonoBehaviour
         Sequence mySequence = DOTween.Sequence();
 
         if (!isDisplayed) { // The case opens for the player
-            Vector3 target = new Vector3(0, 0, -1.5f);      ///// All values shall be tested and moved to the top on their respective variables
-            mySequence.Append(transform.DOMove(target, 2f));
-            mySequence.Append(transform.DOLocalRotate(new Vector3(0, 90f, 0), 2f));
-            mySequence.Append(rotationAxis.transform.DOLocalRotate(new Vector3(0, 170f, 0), 1.5f));
+            Vector3 target = OUTSIDE_POSITION;
+            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME));
+            mySequence.Append(transform.DOLocalRotate(ROTATION_CASE, ROTATION_TIME));
+            mySequence.Append(rotationAxis.transform.DOLocalRotate(ROTATION_OPEN_CASE, OPEN_CLOSE_TIME));
         } else { // The case closes
             Vector3 target = initialPosition;
-            mySequence.Append(transform.DOMove(target, 2f));
-            mySequence.Prepend(transform.DOLocalRotate(new Vector3(0, 0, 0), 2f));
-            mySequence.Prepend(rotationAxis.transform.DOLocalRotate(new Vector3(0, 0, 0), 1.5f));
+            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME));
+            mySequence.Prepend(transform.DOLocalRotate(Vector3.zero, ROTATION_TIME));
+            mySequence.Prepend(rotationAxis.transform.DOLocalRotate(Vector3.zero, OPEN_CLOSE_TIME));
         }
 
         // Play the tween and switch the display value
@@ -88,13 +98,14 @@ public class CaseDisplay : MonoBehaviour
     /// </summary>
     private void OnMouseDown()
     {
-        //Debug.Log("CLICKED");
         if (!isTweening) {
             MakeGameMove();
         }
     }
 
-
+    /// <summary>
+    /// Set the proper state of the object depending on whether it is tweening on not
+    /// </summary>
     private void ChangeTweeingState() {
         isTweening = !isTweening;
     }
