@@ -52,6 +52,9 @@ public class DiscDisplay : MonoBehaviour
         transform.position = cursorPosition;
     }
 
+    /// <summary>
+    /// Make the game go to the disc holder or back to the case when the mouse button is released
+    /// </summary>
     private void OnMouseUp()
     {
         Vector3 discHolderPosition = GameManager.GetInstance().discHolder.transform.position;
