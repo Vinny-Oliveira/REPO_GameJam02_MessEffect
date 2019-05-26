@@ -59,13 +59,28 @@ public class DiscDisplay : MonoBehaviour
     private void OnMouseUp() {
         GameObject goDiscHolder1 = GameManager.GetInstance().discHolder1;
         GameObject goDiscHolder2 = GameManager.GetInstance().discHolder2;
+        GameObject goCaseOnDisplay = GameManager.GetInstance().caseOnDisplay;
 
                 /* Disc holder is empty */                                      /* Disc holder is in range */
-        if ((!goDiscHolder1.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder1.transform.position) < DISTANCE_TO_SLOT)) {
-            AttachToDiscHolder(goDiscHolder1); // Make the 1st disc holder a parent of the disc
-        } else if ((!goDiscHolder2.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder2.transform.position) < DISTANCE_TO_SLOT)) {
-            AttachToDiscHolder(goDiscHolder2);
-        } else {
+        if ((!goDiscHolder1.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder1.transform.position) < DISTANCE_TO_SLOT))
+        {
+            AttachToNewParent(goDiscHolder1); // Make the 1st disc holder a parent of the disc
+        }           /* Disc holder is empty */                                      /* Disc holder is in range */
+        else if ((!goDiscHolder2.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder2.transform.position) < DISTANCE_TO_SLOT))
+        {
+            AttachToNewParent(goDiscHolder2);
+        }
+        else if (goCaseOnDisplay != null)
+        {
+            goCaseOnDisplay.GetComponent<CaseDisplay>().CheckForDiscInside();
+                    /* The game case is empty */                                      /* Game case is in range */
+            if ((goCaseOnDisplay.GetComponent<CaseDisplay>().disc == null) && (Vector3.Distance(transform.position, goCaseOnDisplay.transform.position) < DISTANCE_TO_SLOT))
+            {
+                AttachToNewParent(goCaseOnDisplay);
+            }
+        }
+        else
+        {
             transform.position = initialPosition;
         }
     }
@@ -75,7 +90,7 @@ public class DiscDisplay : MonoBehaviour
     /// </summary>
     /// <param name="inNewPosition"></param>
     /// <param name="inNewParent"></param>
-    void AttachToDiscHolder(GameObject inNewParent) {
+    void AttachToNewParent(GameObject inNewParent) {
         transform.position = inNewParent.transform.position;
         transform.parent = null;
         transform.parent = inNewParent.transform;

@@ -80,7 +80,7 @@ public class CaseDisplay : MonoBehaviour
             Vector3 target = initialPosition;
             mySequence.Append(transform.DOMove(target, TRANSTATION_TIME).OnStepComplete(GameManager.GetInstance().ChangeClickingState)); // Allows games to be clicked again
             mySequence.Prepend(transform.DOLocalRotate(Vector3.zero, ROTATION_TIME));
-            mySequence.Prepend(rotationAxis.transform.DOLocalRotate(Vector3.zero, OPEN_CLOSE_TIME));
+            mySequence.Prepend(rotationAxis.transform.DOLocalRotate(Vector3.zero, OPEN_CLOSE_TIME).OnStepComplete(CheckForDiscInside));
             mySequence.OnStart(DetachFromGameManager);
         }
 
