@@ -56,15 +56,29 @@ public class DiscDisplay : MonoBehaviour
     /// <summary>
     /// Make the game go to the disc holder or back to the case when the mouse button is released
     /// </summary>
-    private void OnMouseUp()
-    {
-        Vector3 discHolderPosition = GameManager.GetInstance().discHolder.transform.position;
+    private void OnMouseUp() {
+        GameObject goDiscHolder1 = GameManager.GetInstance().discHolder1;
+        GameObject goDiscHolder2 = GameManager.GetInstance().discHolder2;
 
-        if (Vector3.Distance(transform.position, discHolderPosition) < DISTANCE_TO_SLOT) {
-            transform.position = discHolderPosition;
-            transform.parent = GameManager.GetInstance().discHolder.transform;
+                /* Disc holder is empty */                                      /* Disc holder is in range */
+        if ((!goDiscHolder1.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder1.transform.position) < DISTANCE_TO_SLOT)) { // Distance to 1st disc holder
+            AttachToDiscHolder(goDiscHolder1);
+        } else if ((!goDiscHolder2.GetComponent<DiscHolder>().HasChildren()) && (Vector3.Distance(transform.position, goDiscHolder2.transform.position) < DISTANCE_TO_SLOT)) { // Distance to 2nd disc holder
+            AttachToDiscHolder(goDiscHolder2);
         } else {
             transform.position = initialPosition;
         }
+    }
+
+    /// <summary>
+    /// Place the disc in the disc holder and make it a child of the holder
+    /// </summary>
+    /// <param name="inNewPosition"></param>
+    /// <param name="inNewParent"></param>
+    void AttachToDiscHolder(GameObject inNewParent) {
+        transform.position = inNewParent.transform.position;
+        transform.parent = null;
+        transform.parent = inNewParent.transform;
+        //inNewParent.GetComponent<DiscHolder>().isParent = true;
     }
 }

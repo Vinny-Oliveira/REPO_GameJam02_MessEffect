@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public Dictionary<GAME, string> gameDictionary = new Dictionary<GAME, string>();
 
-    public GameObject discHolder;
+    public GameObject discHolder1;
+    public GameObject discHolder2;
 
+    public GameObject caseOnDisplay;
+
+    // Control variables
     public bool isClickable;
 
     #region LAZY_SINGLETON
