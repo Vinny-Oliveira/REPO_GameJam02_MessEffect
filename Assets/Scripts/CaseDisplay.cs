@@ -11,7 +11,7 @@ public class CaseDisplay : MonoBehaviour
     public Game gameCase;
 
     // UI Elements
-    public TextMeshProUGUI txtGameTitle;
+    //public TextMeshProUGUI txtGameTitle;
     public Image gameCover;
 
     // Tweening variables - Vectors
@@ -78,12 +78,12 @@ public class CaseDisplay : MonoBehaviour
 
         if (!isDisplayed) { // The case opens for the player
             Vector3 target = OUTSIDE_POSITION;
-            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME));
+            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME).OnStart(GameManager.GetInstance().ChangeClickingState)); // Prevent other games to be clicked
             mySequence.Append(transform.DOLocalRotate(ROTATION_CASE, ROTATION_TIME));
             mySequence.Append(rotationAxis.transform.DOLocalRotate(ROTATION_OPEN_CASE, OPEN_CLOSE_TIME));
         } else { // The case closes
             Vector3 target = initialPosition;
-            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME));
+            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME).OnStepComplete(GameManager.GetInstance().ChangeClickingState)); // Allows games to be clicked again
             mySequence.Prepend(transform.DOLocalRotate(Vector3.zero, ROTATION_TIME));
             mySequence.Prepend(rotationAxis.transform.DOLocalRotate(Vector3.zero, OPEN_CLOSE_TIME));
         }
@@ -98,7 +98,7 @@ public class CaseDisplay : MonoBehaviour
     /// </summary>
     private void OnMouseDown()
     {
-        if (!isTweening) {
+        if ((!isTweening && isDisplayed) || (!isTweening && GameManager.GetInstance().isClickable)) {
             MakeGameMove();
         }
     }

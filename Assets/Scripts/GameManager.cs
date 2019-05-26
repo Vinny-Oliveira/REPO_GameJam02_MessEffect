@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject discHolder;
 
+    public bool isClickable;
+
     #region LAZY_SINGLETON
     private static GameManager instance;
 
@@ -40,16 +42,23 @@ public class GameManager : MonoBehaviour
     #endregion
 
     // Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
+    void Start()
+    {
+        isClickable = true;
+    }
 
     //// Update is called once per frame
     //void Update()
     //{
-        
+
     //}
+
+    /// <summary>
+    /// Set the proper state of the object depending on whether it is tweening on not
+    /// </summary>
+    public void ChangeClickingState() {
+        isClickable = !isClickable;
+    }
 
     public void ExitGame()
     {

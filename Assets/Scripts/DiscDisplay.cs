@@ -9,14 +9,14 @@ public class DiscDisplay : MonoBehaviour
     public Game gameDisc;
 
     // UI Elements
-    public TextMeshProUGUI txtGameTitle;
+    //public TextMeshProUGUI txtGameTitle;
     public Image gameCover;
 
     // Drag and drop variables
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 initialPosition;
-    const float DISTANCE_TO_SLOT = 1f;
+    const float DISTANCE_TO_SLOT = 0.5f;
 
     // Start is called before the first frame update
     void Start()
