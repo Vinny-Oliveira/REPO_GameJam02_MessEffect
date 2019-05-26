@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public Dictionary<GAME, string> gameDictionary = new Dictionary<GAME, string>();
 
+    public GameObject discHolder;
+
     #region LAZY_SINGLETON
     private static GameManager instance;
 
