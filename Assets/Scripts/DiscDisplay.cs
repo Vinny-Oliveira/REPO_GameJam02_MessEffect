@@ -15,7 +15,7 @@ public class DiscDisplay : MonoBehaviour
     // Drag and drop variables
     private Vector3 screenPoint;
     private Vector3 offset;
-    private Vector3 initialPosition;
+    public Vector3 initialPosition;
     const float DISTANCE_TO_SLOT = 0.5f;
 
     // Start is called before the first frame update
@@ -77,6 +77,10 @@ public class DiscDisplay : MonoBehaviour
             if ((goCaseOnDisplay.GetComponent<CaseDisplay>().disc == null) && (Vector3.Distance(transform.position, goCaseOnDisplay.transform.position) < DISTANCE_TO_SLOT))
             {
                 AttachToNewParent(goCaseOnDisplay);
+            }
+            else
+            {
+                transform.position = initialPosition;
             }
         }
         else
