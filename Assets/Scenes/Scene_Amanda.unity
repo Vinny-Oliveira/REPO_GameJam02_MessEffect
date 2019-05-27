@@ -710,31 +710,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5422407456359214328, guid: 039ab5f4ac76ab54c9a09fda18e21a8a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 823814831}
-    - target: {fileID: 4030262273487460462, guid: 039ab5f4ac76ab54c9a09fda18e21a8a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030262273487460462, guid: 039ab5f4ac76ab54c9a09fda18e21a8a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030262273487460462, guid: 039ab5f4ac76ab54c9a09fda18e21a8a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.0000030994415
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030262273487460462, guid: 039ab5f4ac76ab54c9a09fda18e21a8a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 200
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039ab5f4ac76ab54c9a09fda18e21a8a, type: 3}
 --- !u!1 &279348705 stripped
@@ -750,11 +725,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1562404959}
     m_Modifications:
-    - target: {fileID: 3834901714082739826, guid: d5086f1b328a00143ab80afdde08e72a,
-        type: 3}
-      propertyPath: m_Name
-      value: GameCase_canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 3834901714082739830, guid: d5086f1b328a00143ab80afdde08e72a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -876,6 +846,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: a864fba3f565f534dbb1c3e9f47285a5,
         type: 3}
+    - target: {fileID: 3834901714082739826, guid: d5086f1b328a00143ab80afdde08e72a,
+        type: 3}
+      propertyPath: m_Name
+      value: GameCase_canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 3834901713235233489, guid: d5086f1b328a00143ab80afdde08e72a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2100,6 +2075,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996fa0069f83ea549b6f695c5f4f9c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discHolder1: {fileID: 0}
+  discHolder2: {fileID: 0}
+  caseOnDisplay: {fileID: 0}
+  isClickable: 0
 --- !u!4 &1582970024
 Transform:
   m_ObjectHideFlags: 0
