@@ -37,7 +37,6 @@ public class CaseDisplay : MonoBehaviour
     void Start()
     {
         // Get the information from the game scriptable object and place it in the game object
-        //txtGameTitle.text = gameCase.gameName; //GameManager.GetInstance().gameDictionary[game.caseName];
         gameCover.sprite = gameCase.cover;
 
         // Get the initial position
@@ -124,6 +123,9 @@ public class CaseDisplay : MonoBehaviour
     /// </summary>
     private void OnMouseDown()
     {
+        // Do nothing if the game is either paused or over
+        if (GameManager.GetInstance().isGamePaused || GameManager.GetInstance().isGameOver) { return; }
+
         /* Case not moving AND (The case is displayed OR Multiple cases may be clicked) */
         if (!isTweening && (isDisplayed || GameManager.GetInstance().isClickable)) {
             MakeGameMove();

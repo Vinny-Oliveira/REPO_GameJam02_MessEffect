@@ -17,6 +17,20 @@ public class GameManager : MonoBehaviour
     // Control variables
     public bool isClickable;
 
+    #region IN_GAME Variables
+    // Booleans for game control
+    public bool isGameOver;
+    public bool isGamePaused;
+    
+    #endregion
+
+    #region References for canvases and panels
+    // UI variables
+    //public GameObject pauseCanvas;
+    public GameObject gameOverCanvas;
+
+    #endregion
+
     #region LAZY_SINGLETON
     private static GameManager instance;
 
@@ -65,16 +79,46 @@ public class GameManager : MonoBehaviour
         isClickable = !isClickable;
     }
 
-
+    /// <summary>
+    /// Check if all game discs match their respective cases
+    /// </summary>
     public void CheckForAllMatches() {
-        foreach (string key in gameDictionary.Keys) {
+        foreach (string key in gameDictionary.Keys) { // Loop through the items in the dictionary
             if (!gameDictionary[key]) {
                 return;
             }
         }
 
         Debug.Log("YOU WIN!");
+        TriggerGameOver();
     }
+
+    /// <summary>
+    /// Game over if all games are organized
+    /// </summary>
+    public void TriggerGameOver() {
+        Time.timeScale = 0f;
+        isGameOver = true;
+        gameOverCanvas.SetActive(true);
+    }
+
+    #region PAUSE MANAGEMENT
+
+    public void PauseGame() {
+        Time.timeScale = 0f;
+        //pauseCanvas.SetActive(true);
+        //Cursor.lockState = CursorLockMode.None;
+        isGamePaused = true;
+    }
+
+    public void UnpauseGame() {
+        Time.timeScale = 1f;
+        //pauseCanvas.SetActive(false);
+        //Cursor.lockState = CursorLockMode.Locked;
+        isGamePaused = false;
+    }
+
+    #endregion
 
     public void QuitGame()
     {

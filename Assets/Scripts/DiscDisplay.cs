@@ -36,6 +36,9 @@ public class DiscDisplay : MonoBehaviour
     /// When the mouse clicks on the disc, obtain information about its position
     /// </summary>
     void OnMouseDown() {
+        // Do nothing if the game is either paused or over
+        if (GameManager.GetInstance().isGamePaused || GameManager.GetInstance().isGameOver) { return; }
+
         initialPosition = transform.position;
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position); // To obtain the z coordinate of the object
 
@@ -48,6 +51,9 @@ public class DiscDisplay : MonoBehaviour
     /// </summary>
     private void OnMouseDrag()
     {
+        // Do nothing if the game is either paused or over
+        if (GameManager.GetInstance().isGamePaused || GameManager.GetInstance().isGameOver) { return; }
+
         Vector3 cursorScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorScreenPoint) + offset;
         transform.position = cursorPosition;
@@ -57,6 +63,9 @@ public class DiscDisplay : MonoBehaviour
     /// Make the game go to the disc holder or back to the case when the mouse button is released
     /// </summary>
     private void OnMouseUp() {
+        // Do nothing if the game is either paused or over
+        if (GameManager.GetInstance().isGamePaused || GameManager.GetInstance().isGameOver) { return; }
+
         GameObject goDiscHolder1 = GameManager.GetInstance().discHolder1;
         GameObject goDiscHolder2 = GameManager.GetInstance().discHolder2;
         GameObject goCaseOnDisplay = GameManager.GetInstance().caseOnDisplay;
