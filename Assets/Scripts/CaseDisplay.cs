@@ -20,9 +20,9 @@ public class CaseDisplay : MonoBehaviour
     Vector3 ROTATION_OPEN_CASE = new Vector3(0, 170f, 0);
 
     // Tweening variables - Time dirations
-    const float TRANSTATION_TIME = 1.5f;
-    const float ROTATION_TIME = 1f;
-    const float OPEN_CLOSE_TIME = 1f;
+    const float TRANSTATION_TIME = 0.8f;
+    const float ROTATION_TIME = 0.6f;
+    const float OPEN_CLOSE_TIME = 0.4f;
 
     // Control variables
     public GameObject rotationAxis;
