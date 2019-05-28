@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("YOU WIN!");
     }
 
-    public void ExitGame()
+    public void QuitGame()
     {
         Application.Quit();
     }
