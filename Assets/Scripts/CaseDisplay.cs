@@ -58,12 +58,14 @@ public class CaseDisplay : MonoBehaviour
         CheckForDiscInside();
 
         if (disc == null) { // If there is no disc inside the case
+            GameManager.GetInstance().gameDictionary[gameCase.gameName] = false;
             Debug.Log("The case is empty.");
         } else if (gameCase.gameName == disc.gameDisc.gameName) { // Checks if the disc inside matches with the case
             GameManager.GetInstance().gameDictionary[gameCase.gameName] = true;
             GameManager.GetInstance().CheckForAllMatches();
             Debug.Log("Great! This is the right disc!");
         } else {
+            GameManager.GetInstance().gameDictionary[gameCase.gameName] = false;
             Debug.Log("This disc does not belong to this case");
         }
     }
