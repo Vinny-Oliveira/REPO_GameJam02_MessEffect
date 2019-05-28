@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GAME { MASS_EFFECT, INTERSTELLAR, BLADE_RUNNER };
+//public enum GAME { MASS_EFFECT, INTERSTELLAR, BLADE_RUNNER };
 
 public class GameManager : MonoBehaviour
 {
