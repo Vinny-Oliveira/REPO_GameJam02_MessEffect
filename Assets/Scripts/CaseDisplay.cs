@@ -45,6 +45,9 @@ public class CaseDisplay : MonoBehaviour
 
         // The disc that is inside
         CheckForDiscInside();
+
+        // Populate the dictionary of games
+        GameManager.GetInstance().gameDictionary.Add(gameCase.gameName, false); // Game and case do not match at start
     }
 
     /// <summary>
@@ -52,9 +55,13 @@ public class CaseDisplay : MonoBehaviour
     /// </summary>
     [ContextMenu("Check if match")]
     public void CheckIfMatch() { /**** Eventually, this function should return a boolean so we can check if all games match their cases ****/
+        CheckForDiscInside();
+
         if (disc == null) { // If there is no disc inside the case
             Debug.Log("The case is empty.");
         } else if (gameCase.gameName == disc.gameDisc.gameName) { // Checks if the disc inside matches with the case
+            GameManager.GetInstance().gameDictionary[gameCase.gameName] = true;
+            GameManager.GetInstance().CheckForAllMatches();
             Debug.Log("Great! This is the right disc!");
         } else {
             Debug.Log("This disc does not belong to this case");
@@ -80,7 +87,7 @@ public class CaseDisplay : MonoBehaviour
             Vector3 target = initialPosition;
             mySequence.Append(transform.DOMove(target, TRANSTATION_TIME).OnStepComplete(GameManager.GetInstance().ChangeClickingState)); // Allows games to be clicked again
             mySequence.Prepend(transform.DOLocalRotate(Vector3.zero, ROTATION_TIME));
-            mySequence.Prepend(rotationAxis.transform.DOLocalRotate(Vector3.zero, OPEN_CLOSE_TIME).OnStepComplete(CheckForDiscInside));
+            mySequence.Prepend(rotationAxis.transform.DOLocalRotate(Vector3.zero, OPEN_CLOSE_TIME).OnStepComplete(CheckIfMatch));
             mySequence.OnStart(DetachFromGameManager);
         }
 

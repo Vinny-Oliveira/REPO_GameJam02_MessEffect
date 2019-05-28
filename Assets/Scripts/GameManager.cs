@@ -6,7 +6,8 @@ public enum GAME { MASS_EFFECT, INTERSTELLAR, BLADE_RUNNER };
 
 public class GameManager : MonoBehaviour
 {
-    public Dictionary<GAME, string> gameDictionary = new Dictionary<GAME, string>();
+    //public Dictionary<GAME, string> gameDictionary = new Dictionary<GAME, string>();
+    public Dictionary<string, bool> gameDictionary = new Dictionary<string, bool>();
 
     public GameObject discHolder1;
     public GameObject discHolder2;
@@ -62,6 +63,17 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ChangeClickingState() {
         isClickable = !isClickable;
+    }
+
+
+    public void CheckForAllMatches() {
+        foreach (string key in gameDictionary.Keys) {
+            if (!gameDictionary[key]) {
+                return;
+            }
+        }
+
+        Debug.Log("YOU WIN!");
     }
 
     public void ExitGame()
