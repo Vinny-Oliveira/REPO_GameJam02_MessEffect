@@ -184,7 +184,7 @@ RectTransform:
   m_GameObject: {fileID: 2518322599816736252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 17.415806, y: 2.7468507, z: 2.7468507}
+  m_LocalScale: {x: 17.415806, y: 2.9872, z: 2.7468507}
   m_Children:
   - {fileID: 5041501817804688774}
   - {fileID: 2289614332465918027}
@@ -224,7 +224,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8deae06f38d20f94094e4aad804a9862, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
