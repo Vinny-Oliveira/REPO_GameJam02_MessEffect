@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0223db3e45a18924584e4f5f66f1dd23, type: 3}
-  m_Name: Portal 2
+  m_Name: Overwatch
   m_EditorClassIdentifier: 
-  gameName: Portal 2
-  cover: {fileID: 21300000, guid: bdce4373df434cb4d951fe76f02c0e10, type: 3}
-  spine: {fileID: 21300000, guid: 2f08c4a38b8f1a04998ed6b62df28ae6, type: 3}
+  gameName: Overwatch
+  cover: {fileID: 21300000, guid: a864fba3f565f534dbb1c3e9f47285a5, type: 3}
+  spine: {fileID: 21300000, guid: 8ce313c916408d24bace37168778b85a, type: 3}
