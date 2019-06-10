@@ -13,17 +13,6 @@ public class Game : ScriptableObject {
     //                                          Efficiency could be a problem, because the dictionary would have to be loaded in the beginning of the game.
     //                                          Still, it would be a good chance to learn more about lists and dictionaries. */
     public Sprite cover;
-
-    /// <summary>
-    /// Checks if the game inside the case matches the case
-    /// </summary>
-    /// <returns></returns>
-    //public bool IsMatch() {
-    //    if (caseName == discName) {
-    //        return true;
-    //    } else {
-    //        return false;
-    //    }
-    //}
+    public Sprite spine;
 
 }

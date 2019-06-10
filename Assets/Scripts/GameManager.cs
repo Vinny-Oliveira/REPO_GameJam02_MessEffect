@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //public enum GAME { MASS_EFFECT, INTERSTELLAR, BLADE_RUNNER };
 
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverCanvas;
 
     #endregion
+
+    // Scenes
+    public Scene MainMenu;
+    public Scene Level_1;
 
     #region LAZY_SINGLETON
     private static GameManager instance;
@@ -116,8 +121,30 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region SCENE_MANAGEMENT
+
+    public void RestartLevel() {
+        Time.timeScale = 1f;
+        isGameOver = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadLevel_1() {
+        Time.timeScale = 1f;
+        //isInMainMenu = false;
+        SceneManager.LoadScene(Level_1.handle);
+    }
+
+    public void LoadMainMenu() {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(MainMenu.handle);
+    }
+
+    #endregion
+
     public void QuitGame()
     {
+        Debug.Log("Quitting Game...");
         Application.Quit();
     }
 

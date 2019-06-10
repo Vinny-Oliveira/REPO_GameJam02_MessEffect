@@ -13,6 +13,7 @@ public class CaseDisplay : MonoBehaviour
     // UI Elements
     //public TextMeshProUGUI txtGameTitle;
     public Image gameCover;
+    public Image spineCover;
 
     // Tweening variables - Vectors
     Vector3 outsidePosition;
@@ -38,6 +39,7 @@ public class CaseDisplay : MonoBehaviour
     {
         // Get the information from the game scriptable object and place it in the game object
         gameCover.sprite = gameCase.cover;
+        spineCover.sprite = gameCase.spine;
 
         // Get the initial position and the outside target position
         initialPosition = transform.position;
