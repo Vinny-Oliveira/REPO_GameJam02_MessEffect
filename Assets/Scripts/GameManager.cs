@@ -6,19 +6,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // Dictionary with the infomration of the game cases
     //public Dictionary<GAME, string> gameDictionary = new Dictionary<GAME, string>();
     public Dictionary<string, bool> gameDictionary = new Dictionary<string, bool>();
 
+    // Slots to place discs
     public GameObject discHolder1;
     public GameObject discHolder2;
 
+    // Objects for the position of the case that is on display
     public GameObject caseOnDisplay;
-
-    // Control variables
-    public bool isClickable;
+    public GameObject casePlaceHolder;
 
     #region IN_GAME Variables
     // Booleans for game control
+    public bool isClickable;
     public bool isGameOver;
     public bool isGamePaused;
     
@@ -49,12 +51,6 @@ public class GameManager : MonoBehaviour
         } else if (instance != this) {
             Destroy(gameObject);
         }
-
-        /* FOR THE 2nd POSSIBILITY
-        gameDictionary.Add(GAME.MASS_EFFECT, "Mass Effect");
-        gameDictionary.Add(GAME.INTERSTELLAR, "Interstellar");
-        gameDictionary.Add(GAME.BLADE_RUNNER, "Blade Runner");
-        */
 
         //DontDestroyOnLoad(gameObject);
     }

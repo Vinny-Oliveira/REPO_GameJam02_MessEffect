@@ -15,11 +15,11 @@ public class CaseDisplay : MonoBehaviour
     public Image gameCover;
 
     // Tweening variables - Vectors
-    Vector3 OUTSIDE_POSITION = new Vector3(0, 0, -1.5f);
+    Vector3 outsidePosition;
     Vector3 ROTATION_CASE = new Vector3(0, 90f, 0);
     Vector3 ROTATION_OPEN_CASE = new Vector3(0, 170f, 0);
 
-    // Tweening variables - Time dirations
+    // Tweening variables - Time durations
     const float TRANSTATION_TIME = 0.8f;
     const float ROTATION_TIME = 0.6f;
     const float OPEN_CLOSE_TIME = 0.4f;
@@ -39,8 +39,9 @@ public class CaseDisplay : MonoBehaviour
         // Get the information from the game scriptable object and place it in the game object
         gameCover.sprite = gameCase.cover;
 
-        // Get the initial position
+        // Get the initial position and the outside target position
         initialPosition = transform.position;
+        outsidePosition = GameManager.GetInstance().casePlaceHolder.transform.position;
 
         // The disc that is inside
         CheckForDiscInside();
@@ -79,7 +80,7 @@ public class CaseDisplay : MonoBehaviour
         Sequence mySequence = DOTween.Sequence();
 
         if (!isDisplayed) { // The case opens for the player
-            Vector3 target = OUTSIDE_POSITION;
+            Vector3 target = outsidePosition;
             mySequence.Append(transform.DOMove(target, TRANSTATION_TIME)); // Move towards player
             mySequence.Append(transform.DOLocalRotate(ROTATION_CASE, ROTATION_TIME)); // Rotate the front of the case to the player
             mySequence.Append(rotationAxis.transform.DOLocalRotate(ROTATION_OPEN_CASE, OPEN_CLOSE_TIME).OnStepComplete(AttachToGameManager)); // Open the case and make it manageable by the Game Manager

@@ -899,17 +899,17 @@ PrefabInstance:
     - target: {fileID: 2490646105718289026, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.386
+      value: -0.38
       objectReference: {fileID: 0}
     - target: {fileID: 2490646105718289026, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8661985
+      value: -2.87
       objectReference: {fileID: 0}
     - target: {fileID: 2490646105718289026, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4454765
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 2490646105718289026, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
@@ -1750,17 +1750,17 @@ PrefabInstance:
     - target: {fileID: 2490646105718289026, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2086356
+      value: -1.21
       objectReference: {fileID: 0}
     - target: {fileID: 2490646105718289026, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8661985
+      value: -2.87
       objectReference: {fileID: 0}
     - target: {fileID: 2490646105718289026, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4454765
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 2490646105718289026, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
@@ -1921,6 +1921,7 @@ MonoBehaviour:
   discHolder1: {fileID: 1317027242}
   discHolder2: {fileID: 677267685}
   caseOnDisplay: {fileID: 0}
+  casePlaceHolder: {fileID: 1045663482}
   isClickable: 0
   isGameOver: 0
   isGamePaused: 0
