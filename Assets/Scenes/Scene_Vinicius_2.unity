@@ -3175,7 +3175,7 @@ MonoBehaviour:
   MainMenu:
     m_Handle: 0
   Level_1:
-    m_Handle: 0
+    m_Handle: 1
 --- !u!4 &1582970024
 Transform:
   m_ObjectHideFlags: 0

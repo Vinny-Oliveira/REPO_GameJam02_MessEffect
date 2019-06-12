@@ -103,6 +103,13 @@ public class GameManager : MonoBehaviour
         gameOverCanvas.SetActive(true);
     }
 
+    /// <summary>
+    /// Sets isGameOver to false and allows the game to start
+    /// </summary>
+    public void TriggerGameStart() {
+        isGameOver = false;
+    }
+
     #region PAUSE MANAGEMENT
 
     public void PauseGame() {
