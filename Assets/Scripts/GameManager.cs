@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public bool isClickable;
     public bool isGameOver;
     public bool isGamePaused;
-    
+
     #endregion
 
     #region References for canvases and panels
