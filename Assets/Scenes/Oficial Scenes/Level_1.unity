@@ -1826,7 +1826,7 @@ PrefabInstance:
     - target: {fileID: 5548053347040471572, guid: b8ac9a72fb36e514e99f383aa7219267,
         type: 3}
       propertyPath: m_text
-      value: "Empty \nSpot 2"
+      value: "Empty \nSlot 2"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8ac9a72fb36e514e99f383aa7219267, type: 3}
