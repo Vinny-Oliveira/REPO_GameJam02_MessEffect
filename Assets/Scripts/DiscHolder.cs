@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class DiscHolder : MonoBehaviour {
 
-    //public bool isParent = false;
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
-
     /// <summary>
     /// Check if the disc holder has discs as children
     /// </summary>

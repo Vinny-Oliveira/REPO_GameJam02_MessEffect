@@ -67,12 +67,6 @@ public class GameManager : MonoBehaviour
         isClickable = true;
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
-
     /// <summary>
     /// Set the proper state of the object depending on whether it is tweening on not
     /// </summary>
