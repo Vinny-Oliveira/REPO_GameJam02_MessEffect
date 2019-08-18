@@ -21,7 +21,7 @@ public class CaseDisplay : MonoBehaviour
     Vector3 ROTATION_OPEN_CASE = new Vector3(0, 170f, 0);
 
     // Tweening variables - Time durations
-    const float TRANSTATION_TIME = 0.8f;
+    const float TRANSLATION_TIME = 0.8f;
     const float ROTATION_TIME = 0.6f;
     const float OPEN_CLOSE_TIME = 0.4f;
 
@@ -83,13 +83,13 @@ public class CaseDisplay : MonoBehaviour
 
         if (!isDisplayed) { // The case opens for the player
             Vector3 target = outsidePosition;
-            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME)); // Move towards player
+            mySequence.Append(transform.DOMove(target, TRANSLATION_TIME)); // Move towards player
             mySequence.Append(transform.DOLocalRotate(ROTATION_CASE, ROTATION_TIME)); // Rotate the front of the case to the player
             mySequence.Append(rotationAxis.transform.DOLocalRotate(ROTATION_OPEN_CASE, OPEN_CLOSE_TIME).OnStepComplete(AttachToGameManager)); // Open the case and make it manageable by the Game Manager
             mySequence.OnStart(GameManager.GetInstance().ChangeClickingState); // Prevent other games to be clicked
         } else { // The case closes
             Vector3 target = initialPosition;
-            mySequence.Append(transform.DOMove(target, TRANSTATION_TIME).OnStepComplete(GameManager.GetInstance().ChangeClickingState)); // Allows games to be clicked again
+            mySequence.Append(transform.DOMove(target, TRANSLATION_TIME).OnStepComplete(GameManager.GetInstance().ChangeClickingState)); // Allows games to be clicked again
             mySequence.Prepend(transform.DOLocalRotate(Vector3.zero, ROTATION_TIME));
             mySequence.Prepend(rotationAxis.transform.DOLocalRotate(Vector3.zero, OPEN_CLOSE_TIME).OnStepComplete(CheckIfMatch));
             mySequence.OnStart(DetachFromGameManager);
